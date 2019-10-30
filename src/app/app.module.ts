@@ -13,6 +13,9 @@ import { StoreModule } from '@ngrx/store';
 import { todoReducer } from './reducers/todo.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
+// Forms
+import { ReactiveFormsModule } from '@angular/forms'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +29,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({
       todos: todoReducer // Conectamos el objeto con el reducer encargado de realizar las operaciones
     }),
