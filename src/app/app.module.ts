@@ -14,7 +14,7 @@ import { todoReducer } from './reducers/todo.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 // Forms
-import { ReactiveFormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms'; 
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     StoreModule.forRoot({
       todos: todoReducer // Conectamos el objeto con el reducer encargado de realizar las operaciones
