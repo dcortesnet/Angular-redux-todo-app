@@ -21,6 +21,9 @@ export function todoReducer(state = initalStateTodo, action: any): Todo[] {
 
     case fromTodoAction.DELETE_TODO:
       return _mapDeleteTodoActionToState(state, action);
+    
+    case fromTodoAction.TOGGLE_ALL_TODO:
+      return _mapToggleAllTodoActionToState(state, action);
 
     default:
       return state;
@@ -53,4 +56,12 @@ function _mapUpdateTodoActionToState(state: Todo[], action: fromTodoAction.Updat
 
 function _mapDeleteTodoActionToState(state: Todo[], action: fromTodoAction.DeleteTodoAction): Todo[] {
   return state.filter((todo: Todo) => todo.id !== action.idTodo );
+}
+
+
+function _mapToggleAllTodoActionToState(state: Todo[], action: fromTodoAction.ToggleAllTodoAction): Todo[]{
+  return state.map((todo: Todo) => {
+    todo.isComplete = action.isComplete;
+    return todo;
+  });
 }
