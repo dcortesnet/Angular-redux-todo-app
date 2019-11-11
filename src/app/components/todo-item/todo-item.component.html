@@ -7,5 +7,5 @@
     <label (dblclick)="editInput()">{{ todo.text }}</label>
     <button class="destroy"></button>
   </div>
-  <input [(ngModel)]="todo.text" (blur)="endEditInput()" #txtEdit class="edit" value=""/>
+  <input [(ngModel)]="todo.text" (keydown.enter)="endEditInput()" (blur)="endEditInput()" #txtEdit class="edit" value=""/>
 </li>

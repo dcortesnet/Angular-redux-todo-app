@@ -2,9 +2,9 @@ import * as fromTodoAction from '../actions/todo.actions';
 import { Todo } from '../models/todo.model';
 
 const initalStateTodo: Todo[] = [
-  {id: 1, isComplete: false, text: 'Todo número 1'},
-  {id: 2, isComplete: false, text: 'Todo número 2'},
-  {id: 3, isComplete: false, text: 'Todo número 3'}
+  { id: 1, isComplete: false, text: 'Todo número 1' },
+  { id: 2, isComplete: false, text: 'Todo número 2' },
+  { id: 3, isComplete: false, text: 'Todo número 3' }
 ];
 
 export function todoReducer(state = initalStateTodo, action: any): Todo[] {
@@ -15,6 +15,10 @@ export function todoReducer(state = initalStateTodo, action: any): Todo[] {
 
     case fromTodoAction.TOGGLE_TODO:
       return _mapToogleTodoActionToState(state, action);
+
+    case fromTodoAction.UPDATE_TODO:
+      return _mapUpdateTodoActionToState(state, action);
+
     default:
       return state;
   }
@@ -30,9 +34,16 @@ function _mapToogleTodoActionToState(state: Todo[], action: fromTodoAction.Toggl
   return state.map((todo: Todo) => {
     if (todo.id === action.idTodo) {
       todo.isComplete = !todo.isComplete;
-      return todo;
-    } else {
-      return todo;
     }
+    return todo;
+  });
+}
+
+function _mapUpdateTodoActionToState(state: Todo[], action: fromTodoAction.UpdateTodoAction): Todo[] {
+  return state.map((todo: Todo) => {
+    if (todo.id === action.idTodo) {
+      todo.text = action.text;
+    }
+    return todo;
   });
 }
