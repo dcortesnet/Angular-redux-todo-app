@@ -1,6 +1,9 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Todo } from 'src/app/models/todo.model';
 import { FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.state';
+import { ToggleTodoAction } from 'src/app/actions/todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -13,10 +16,13 @@ export class TodoItemComponent {
   @ViewChild('txtEdit', { static: false }) txtEdit: ElementRef;
   isEditing = false;
 
-  constructor() { }
+  constructor(
+    private _store: Store<AppState>,
+  ) { }
 
   changeComplete() {
-    this.todo.isComplete = !this.todo.isComplete;
+    this.todo.isComplete = !!this.todo.isComplete;
+    this._store.dispatch(new ToggleTodoAction(this.todo.id));
   }
 
   private changeIsEditing() {
