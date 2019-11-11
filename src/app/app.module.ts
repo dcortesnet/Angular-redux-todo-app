@@ -10,11 +10,11 @@ import { TodoAddComponent } from './components/todo-add/todo-add.component';
 import { TodoControlsComponent } from './components/todo-controls/todo-controls.component';
 // ngrx
 import { StoreModule } from '@ngrx/store';
-import { todoReducer } from './reducers/todo.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 // Forms
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; 
+import { appCombineReducers } from './state/app.state';
 
 @NgModule({
   declarations: [
@@ -31,9 +31,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({
-      todos: todoReducer // Conectamos el objeto con el reducer encargado de realizar las operaciones
-    }),
+    StoreModule.forRoot(appCombineReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: environment.production, // Restrict extension to log-only mode

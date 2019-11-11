@@ -21,7 +21,7 @@ export function todoReducer(state = initalStateTodo, action: any): Todo[] {
 
     case fromTodoAction.DELETE_TODO:
       return _mapDeleteTodoActionToState(state, action);
-    
+
     case fromTodoAction.TOGGLE_ALL_TODO:
       return _mapToggleAllTodoActionToState(state, action);
 
