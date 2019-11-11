@@ -19,6 +19,9 @@ export function todoReducer(state = initalStateTodo, action: any): Todo[] {
     case fromTodoAction.UPDATE_TODO:
       return _mapUpdateTodoActionToState(state, action);
 
+    case fromTodoAction.DELETE_TODO:
+      return _mapDeleteTodoActionToState(state, action);
+
     default:
       return state;
   }
@@ -46,4 +49,8 @@ function _mapUpdateTodoActionToState(state: Todo[], action: fromTodoAction.Updat
     }
     return todo;
   });
+}
+
+function _mapDeleteTodoActionToState(state: Todo[], action: fromTodoAction.DeleteTodoAction): Todo[] {
+  return state.filter((todo: Todo) => todo.id !== action.idTodo );
 }

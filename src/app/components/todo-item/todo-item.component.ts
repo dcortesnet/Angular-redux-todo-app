@@ -3,7 +3,7 @@ import { Todo } from 'src/app/models/todo.model';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
-import { ToggleTodoAction, UpdateTodoAction } from 'src/app/actions/todo.actions';
+import { ToggleTodoAction, UpdateTodoAction, DeleteTodoAction } from 'src/app/actions/todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -45,6 +45,10 @@ export class TodoItemComponent {
   endEditInput() {
     this.isEditing = false;
     this._store.dispatch(new UpdateTodoAction(this.todo.id, this.todo.text));
+  }
+
+  deleteTodo() {
+    this._store.dispatch(new DeleteTodoAction(this.todo.id));
   }
 
 }
