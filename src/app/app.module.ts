@@ -15,6 +15,7 @@ import { environment } from 'src/environments/environment';
 // Forms
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; 
 import { appCombineReducers } from './state/app.state';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { appCombineReducers } from './state/app.state';
     TodoItemComponent,
     TodoFilterComponent,
     TodoAddComponent,
-    TodoControlsComponent
+    TodoControlsComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,

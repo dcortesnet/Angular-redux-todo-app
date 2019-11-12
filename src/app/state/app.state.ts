@@ -7,11 +7,11 @@ import * as fromFilterAction from '../actions/filter.actions';
 // Estado global de la aplicación
 export interface AppState {
   todos: Todo[];
-  filter: fromFilterAction.validFilters;
+  filterType: fromFilterAction.validFilters;
 }
 
 // Combinación de reducers
 export const appCombineReducers: ActionReducerMap<AppState> = {
   todos: fromTodoReducers.todoReducer,
-  filter: fromFilterReducers.filterReducer
+  filterType: fromFilterReducers.filterReducer
 };
