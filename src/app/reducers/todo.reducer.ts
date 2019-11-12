@@ -2,9 +2,9 @@ import * as fromTodoAction from '../actions/todo.actions';
 import { Todo } from '../models/todo.model';
 
 const initalStateTodo: Todo[] = [
-  { id: 1, isComplete: false, text: 'Todo número 1' },
-  { id: 2, isComplete: false, text: 'Todo número 2' },
-  { id: 3, isComplete: false, text: 'Todo número 3' }
+  { id: 1, isComplete: false, text: 'Tarea 1' },
+  { id: 2, isComplete: false, text: 'Tarea 2' },
+  { id: 3, isComplete: false, text: 'Tarea 3' }
 ];
 
 export function todoReducer(state = initalStateTodo, action: any): Todo[] {
@@ -24,6 +24,9 @@ export function todoReducer(state = initalStateTodo, action: any): Todo[] {
 
     case fromTodoAction.TOGGLE_ALL_TODO:
       return _mapToggleAllTodoActionToState(state, action);
+
+    case fromTodoAction.DELETE_ALL_TODO:
+      return _mapDeleteAllTodoActionToState(state, action);
 
     default:
       return state;
@@ -59,9 +62,14 @@ function _mapDeleteTodoActionToState(state: Todo[], action: fromTodoAction.Delet
 }
 
 
-function _mapToggleAllTodoActionToState(state: Todo[], action: fromTodoAction.ToggleAllTodoAction): Todo[]{
+function _mapToggleAllTodoActionToState(state: Todo[], action: fromTodoAction.ToggleAllTodoAction): Todo[] {
   return state.map((todo: Todo) => {
     todo.isComplete = action.isComplete;
     return todo;
   });
+}
+
+
+function _mapDeleteAllTodoActionToState(state: Todo[], action: fromTodoAction.DeleteAllTodoAction): Todo[] {
+  return [];
 }

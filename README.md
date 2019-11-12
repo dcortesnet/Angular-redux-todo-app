@@ -1,4 +1,24 @@
-# ReduxTodoApp
+# Angular Redux Todo App &middot; ![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
+
+Todo básico con la incorporación de angular y redux, ejemplo práctico para el manejo de estado con redux en una aplicación con angular
+
+* Actions
+* Reducers
+* Combine reducers
+* Store
+* Pipes
+
+## Acerca de redux
+
+https://es.redux.js.org/
+
+## Instalación
+
+ejecutar comando
+
+```
+npm install
+```
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
 

@@ -13,7 +13,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 // Forms
-import { ReactiveFormsModule, FormsModule } from '@angular/forms'; 
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { appCombineReducers } from './state/app.state';
 import { FilterPipe } from './pipes/filter.pipe';
 

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as fromFilterAction from '../../actions/filter.actions';
+import * as fromTodoAction from '../../actions/todo.actions';
+
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
 import { Todo } from 'src/app/models/todo.model';
+
 @Component({
   selector: 'app-todo-controls',
   templateUrl: './todo-controls.component.html',
@@ -25,7 +28,7 @@ export class TodoControlsComponent implements OnInit {
     });
   }
 
-  changeFilter(filter: fromFilterAction.validFilters){
+  changeFilter(filter: fromFilterAction.validFilters) {
     this._store.dispatch(new fromFilterAction.FilterAction(filter));
   }
 
@@ -36,6 +39,10 @@ export class TodoControlsComponent implements OnInit {
       }
       return count;
     }, 0);
+  }
+
+  deleteAllTodo(){
+    this._store.dispatch(new fromTodoAction.DeleteAllTodoAction());
   }
 
 }
