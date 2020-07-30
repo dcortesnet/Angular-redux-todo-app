@@ -1,13 +1,13 @@
 import * as fromTodoAction from '../actions/todo.actions';
-import { Todo } from '../models/todo.model';
+import { TodoModel } from '../models/todo.model';
 
-const initalStateTodo: Todo[] = [
+const initalStateTodo: TodoModel[] = [
   { id: 1, isComplete: false, text: 'Tarea 1' },
   { id: 2, isComplete: false, text: 'Tarea 2' },
   { id: 3, isComplete: false, text: 'Tarea 3' }
 ];
 
-export function todoReducer(state = initalStateTodo, action: any): Todo[] {
+export function todoReducer(state = initalStateTodo, action: any): TodoModel[] {
   switch (action.type) {
 
     case fromTodoAction.ADD_TODO:
@@ -33,14 +33,14 @@ export function todoReducer(state = initalStateTodo, action: any): Todo[] {
   }
 }
 
-function _mapAddTodoToActionToState(state: Todo[], action: fromTodoAction.AddTodoAction): Todo[] {
-  const newTodo: Todo = new Todo(action.text);
+function _mapAddTodoToActionToState(state: TodoModel[], action: fromTodoAction.AddTodoAction): TodoModel[] {
+  const newTodo: TodoModel = new TodoModel(action.text);
   const cloneState = [...state, newTodo];
   return cloneState;
 }
 
-function _mapToogleTodoActionToState(state: Todo[], action: fromTodoAction.ToggleTodoAction): Todo[] {
-  return state.map((todo: Todo) => {
+function _mapToogleTodoActionToState(state: TodoModel[], action: fromTodoAction.ToggleTodoAction): TodoModel[] {
+  return state.map((todo: TodoModel) => {
     if (todo.id === action.idTodo) {
       todo.isComplete = !todo.isComplete;
     }
@@ -48,8 +48,8 @@ function _mapToogleTodoActionToState(state: Todo[], action: fromTodoAction.Toggl
   });
 }
 
-function _mapUpdateTodoActionToState(state: Todo[], action: fromTodoAction.UpdateTodoAction): Todo[] {
-  return state.map((todo: Todo) => {
+function _mapUpdateTodoActionToState(state: TodoModel[], action: fromTodoAction.UpdateTodoAction): TodoModel[] {
+  return state.map((todo: TodoModel) => {
     if (todo.id === action.idTodo) {
       todo.text = action.text;
     }
@@ -57,19 +57,19 @@ function _mapUpdateTodoActionToState(state: Todo[], action: fromTodoAction.Updat
   });
 }
 
-function _mapDeleteTodoActionToState(state: Todo[], action: fromTodoAction.DeleteTodoAction): Todo[] {
-  return state.filter((todo: Todo) => todo.id !== action.idTodo );
+function _mapDeleteTodoActionToState(state: TodoModel[], action: fromTodoAction.DeleteTodoAction): TodoModel[] {
+  return state.filter((todo: TodoModel) => todo.id !== action.idTodo );
 }
 
 
-function _mapToggleAllTodoActionToState(state: Todo[], action: fromTodoAction.ToggleAllTodoAction): Todo[] {
-  return state.map((todo: Todo) => {
+function _mapToggleAllTodoActionToState(state: TodoModel[], action: fromTodoAction.ToggleAllTodoAction): TodoModel[] {
+  return state.map((todo: TodoModel) => {
     todo.isComplete = action.isComplete;
     return todo;
   });
 }
 
 
-function _mapDeleteAllTodoActionToState(state: Todo[], action: fromTodoAction.DeleteAllTodoAction): Todo[] {
+function _mapDeleteAllTodoActionToState(state: TodoModel[], action: fromTodoAction.DeleteAllTodoAction): TodoModel[] {
   return [];
 }

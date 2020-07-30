@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Todo } from '../models/todo.model';
+import { TodoModel } from '../models/todo.model';
 import * as fromFilterAction from '../actions/filter.actions';
 
 @Pipe({
@@ -7,14 +7,14 @@ import * as fromFilterAction from '../actions/filter.actions';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(todos: Todo[], filterType: fromFilterAction.validFilters): Todo[] {
+  transform(todos: TodoModel[], filterType: fromFilterAction.validFilters): TodoModel[] {
     switch (filterType) {
       case 'todos':
         return todos;
       case 'completados':
-        return todos.filter((todo: Todo) => todo.isComplete );
+        return todos.filter((todo: TodoModel) => todo.isComplete );
       case 'pendientes':
-        return todos.filter((todo: Todo) => !todo.isComplete );
+        return todos.filter((todo: TodoModel) => !todo.isComplete );
       default:
         return todos;
     }

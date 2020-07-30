@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
-import { Todo } from 'src/app/models/todo.model';
+import { TodoModel } from 'src/app/models/todo.model';
 import { FormControl, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
@@ -12,7 +12,7 @@ import { ToggleTodoAction, UpdateTodoAction, DeleteTodoAction } from 'src/app/ac
 })
 export class TodoItemComponent {
 
-  @Input() todo: Todo;
+  @Input() todo: TodoModel;
   @ViewChild('txtEdit', { static: false }) txtEdit: ElementRef;
   isEditing = false;
 

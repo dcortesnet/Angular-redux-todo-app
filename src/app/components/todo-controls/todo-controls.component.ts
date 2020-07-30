@@ -4,7 +4,7 @@ import * as fromTodoAction from '../../actions/todo.actions';
 
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
-import { Todo } from 'src/app/models/todo.model';
+import { TodoModel } from 'src/app/models/todo.model';
 
 @Component({
   selector: 'app-todo-controls',
@@ -32,8 +32,8 @@ export class TodoControlsComponent implements OnInit {
     this._store.dispatch(new fromFilterAction.FilterAction(filter));
   }
 
-  countPendingTask(todos: Todo[]): number {
-    return todos.reduce((count: number, todo: Todo) => {
+  countPendingTask(todos: TodoModel[]): number {
+    return todos.reduce((count: number, todo: TodoModel) => {
       if (!todo.isComplete) {
         count += 1;
       }

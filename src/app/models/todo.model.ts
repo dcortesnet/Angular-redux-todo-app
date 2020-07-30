@@ -1,4 +1,4 @@
-export class Todo {
+export class TodoModel {
   id: number;
   text: string;
   isComplete: boolean;
