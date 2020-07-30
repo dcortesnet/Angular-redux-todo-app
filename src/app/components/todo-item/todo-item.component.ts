@@ -13,7 +13,7 @@ import { ToggleTodoAction, UpdateTodoAction, DeleteTodoAction } from 'src/app/ac
 export class TodoItemComponent {
 
   @Input() todo: TodoModel;
-  @ViewChild('txtEdit', { static: false }) txtEdit: ElementRef;
+  @ViewChild('txtEdit') txtEdit: ElementRef;
   isEditing = false;
 
   constructor(
